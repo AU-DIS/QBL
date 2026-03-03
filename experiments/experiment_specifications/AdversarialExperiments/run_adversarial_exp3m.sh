@@ -12,7 +12,7 @@ fi
 
 name=exp3m
 
-rounds=100000
+rounds=1000
 #rounds=10000
 averages=10
 gap=3.2

@@ -3,7 +3,7 @@ project(efficient_multi_armed_bandits)
 SET(BENCHMARK_DOWNLOAD_DEPENDENCIES ON)
 set(CMAKE_CXX_STANDARD 20)
 
-#add_compile_options(-O3)
+add_compile_options(-O2)
 add_subdirectory(csv-parser)
 add_subdirectory(benchmark)
 
