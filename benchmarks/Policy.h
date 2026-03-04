@@ -11,20 +11,24 @@ static void benchmark_policy(benchmark::State &state)
         static_cast<double> (microseconds)
     };
     //auto k = state.range(0);
+    
     for (auto _ : state)
     {
         int rounds = 1000;
+        double total_elapsed_time = 0.0;
         for (int i = 0; i < rounds; i++)
-        {
+        {   
             auto start = std::chrono::high_resolution_clock::now();
             int choice = b.choose();
             b.give_reward(choice, (i % 3)/3.0);
             auto end = std::chrono::high_resolution_clock::now();
-
-            auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<double>>(end-start);
-            state.SetIterationTime(elapsed_time.count());
+            auto step_duration = (end - start);
+            total_elapsed_time += std::chrono::duration<double>(step_duration).count();
         }
+
+        state.SetIterationTime(total_elapsed_time);
     }
+    
 }
 
 template <typename Bandit>
@@ -35,19 +39,21 @@ static void benchmark_policy_update(benchmark::State &state)
     std::chrono::duration<double, std::micro> sleep_duration {
             static_cast<double> (microseconds)
     };
-    //auto k = state.range(0);
+    //auto k = state.range(0);    
     for (auto _ : state)
     {
         int rounds = 1000;
+        double total_elapsed_time = 0.0;
         for (int i = 0; i < rounds; i++)
         {
             int choice = b.choose();
             auto start = std::chrono::high_resolution_clock::now();
             b.give_reward(choice, (i % 3)/3.0);
             auto end = std::chrono::high_resolution_clock::now();
-            auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<double>>(end- start);
-            state.SetIterationTime(elapsed_time.count());
+            auto step_duration = (end - start);
+            total_elapsed_time += std::chrono::duration<double>(step_duration).count();
         }
+        state.SetIterationTime(total_elapsed_time);
     }
 }
 
@@ -60,8 +66,10 @@ static void benchmark_policy_sample(benchmark::State &state)
     };
     Bandit b(state.range(0),state.range(1)*0.1);
     //auto k = state.range(0);
+    
     for (auto _ : state)
     {
+        double total_elapsed_time = 0.0;
         int rounds = 1000;
         for (int i = 0; i < rounds; i++)
         {
@@ -69,9 +77,10 @@ static void benchmark_policy_sample(benchmark::State &state)
             int choice = b.choose();
             auto end = std::chrono::high_resolution_clock::now();
             b.give_reward(choice, (i % 3)/3.0);
-            auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<double>>(end- start);
-            state.SetIterationTime(elapsed_time.count());
+            auto step_duration = (end - start);
+            total_elapsed_time += std::chrono::duration<double>(step_duration).count();
         }
+        state.SetIterationTime(total_elapsed_time);
     }
 }
 
@@ -87,8 +96,10 @@ static void benchmark_m_policy(benchmark::State &state)
             static_cast<double> (microseconds)
     };
     //auto k = state.range(0);
+    
     for (auto _ : state)
     {
+        double total_elapsed_time = 0.0;
         int rounds = 1000;
         for (int i = 0; i < rounds; i++)
         {
@@ -101,10 +112,13 @@ static void benchmark_m_policy(benchmark::State &state)
             auto pause1 = std::chrono::high_resolution_clock::now();
             b.give_reward(choices, reward);
             auto end = std::chrono::high_resolution_clock::now();
-
-            auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<double>>(end-start-(pause1-pause));
-            state.SetIterationTime(elapsed_time.count());
+            
+            auto step_duration = (end - start) - (pause1 - pause);
+            total_elapsed_time += std::chrono::duration<double>(step_duration).count();
+            //auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<double>>(end-start-(pause1-pause));
+            
         }
+        state.SetIterationTime(total_elapsed_time);
     }
 }
 
@@ -120,9 +134,11 @@ static void benchmark_m_policy_update(benchmark::State &state)
             static_cast<double> (microseconds)
     };
     //auto k = state.range(0);
+    
     for (auto _ : state)
     {
         int rounds = 1000;
+        double total_elapsed_time = 0.0;
         for (int i = 0; i < rounds; i++)
         {
             auto choices = b.choose(m);
@@ -132,10 +148,13 @@ static void benchmark_m_policy_update(benchmark::State &state)
             auto start = std::chrono::high_resolution_clock::now();
             b.give_reward(choices, reward);
             auto end = std::chrono::high_resolution_clock::now();
+            
 
-            auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<double>>(end-start);
-            state.SetIterationTime(elapsed_time.count());
+            auto step_duration = (end - start);
+            total_elapsed_time += std::chrono::duration<double>(step_duration).count();
+            //auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<double>>(end-start);
         }
+        state.SetIterationTime(total_elapsed_time);
     }
 }
 template <typename Bandit>
@@ -150,9 +169,11 @@ static void benchmark_m_policy_sample(benchmark::State &state)
             static_cast<double> (microseconds)
     };
     //auto k = state.range(0);
+    
     for (auto _ : state)
     {
         int rounds = 1000;
+        double total_elapsed_time = 0.0;
         for (int i = 0; i < rounds; i++)
         {
             auto start = std::chrono::high_resolution_clock::now();
@@ -163,9 +184,10 @@ static void benchmark_m_policy_sample(benchmark::State &state)
             }
             b.give_reward(choices, reward);
 
-            auto elapsed_time = std::chrono::duration_cast<std::chrono::duration<double>>(end-start);
-            state.SetIterationTime(elapsed_time.count());
+            auto step_duration = (end - start);
+            total_elapsed_time += std::chrono::duration<double>(step_duration).count();
         }
+        state.SetIterationTime(total_elapsed_time);
     }
 }
 
