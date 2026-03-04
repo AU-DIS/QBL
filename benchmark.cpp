@@ -32,25 +32,6 @@
 #include "algorithms/Exp3Bandit/Exp3LightHeap.h"
 #include "algorithms/Exp3Bandit/Exp3IXTor.h"
 
-#include "benchmarks/Exp3_dum.h"
-#include "benchmarks/Exp3_eta.h"
-#include "benchmarks/Exp3_heap.h"
-#include "benchmarks/Exp3.1.h"
-#include "benchmarks/Exp3.h"
-#include "benchmarks/Exp3m.h"
-#include "benchmarks/FPL_H.h"
-#include "benchmarks/FPL.h"
-#include "benchmarks/FPL_buckets.h"
-#include "benchmarks/FPL_toplog.h"
-#include "benchmarks/QBL.h"
-#include "benchmarks/exp3light.h"
-#include "benchmarks/exp3lightheap.h"
-#include "benchmarks/Exp3ixtor.h"
-//#include "benchmarks/Tsallis_iw.h"
-//#include "benchmarks/Tsallis_LTU.h"
-//#include "benchmarks/Tsallis_approx_rv.h"
-//#include "benchmarks/Tsallis_rv.h"
-#include "benchmarks/UCB.h"
 #include "benchmarks/Policy.h"
 //BENCHMARK(benchmark_policy<Exp3>)->Args({100,(long)0.1})->Args({1000,(long)0.1})->Args({10000,(long)0.1})->Args({100000,(long)0.1})->Threads(10)->Unit(benchmark::kMillisecond);
 /*
@@ -87,11 +68,11 @@ BENCHMARK(benchmark_policy_update<QBL>)->Args({100,1})->Args({1000,1})->Args({10
 /*BENCHMARK(benchmark_m_policy<Exp3m>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
 BENCHMARK(benchmark_m_policy_sample<Exp3m>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
 BENCHMARK(benchmark_m_policy_update<Exp3m>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
-*/
-BENCHMARK(benchmark_m_policy<FPL>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
-BENCHMARK(benchmark_m_policy_sample<FPL>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
-BENCHMARK(benchmark_m_policy_update<FPL>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
 
+BENCHMARK(benchmark_m_policy<FPL>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->Unit(benchmark::kMillisecond);
+BENCHMARK(benchmark_m_policy_sample<FPL>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->Unit(benchmark::kMillisecond);
+BENCHMARK(benchmark_m_policy_update<FPL>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->Unit(benchmark::kMillisecond);
+*/
 /*
 BENCHMARK(benchmark_m_policy<Exp3m_heap>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
 BENCHMARK(benchmark_m_policy_sample<Exp3m_heap>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
