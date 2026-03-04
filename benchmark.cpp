@@ -78,9 +78,9 @@ BENCHMARK(benchmark_m_policy<Exp3m_heap>)->Args({100,100/10})->Args({1000,1000/1
 BENCHMARK(benchmark_m_policy_sample<Exp3m_heap>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
 BENCHMARK(benchmark_m_policy_update<Exp3m_heap>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
 */
-BENCHMARK(benchmark_m_policy<QBL>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
-BENCHMARK(benchmark_m_policy_sample<QBL>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
-BENCHMARK(benchmark_m_policy_update<QBL>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(10)->UseManualTime()->Unit(benchmark::kMillisecond);
+BENCHMARK(benchmark_m_policy<QBL>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(50)->UseManualTime()->Unit(benchmark::kMillisecond);
+BENCHMARK(benchmark_m_policy_sample<QBL>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(50)->UseManualTime()->Unit(benchmark::kMillisecond);
+BENCHMARK(benchmark_m_policy_update<QBL>)->Args({100,100/10})->Args({1000,1000/10})->Args({10000,10000/10})->Args({100000,100000/10})->Iterations(50)->UseManualTime()->Unit(benchmark::kMillisecond);
 
 
 
