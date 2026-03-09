@@ -2,7 +2,82 @@
 - Online Graph summarisation experiment: See folder AGLIMPSE
 - Index tuning experiment: See folder DBABandits-modded and HMAB-modded
 
+# Artifact Evaluation
+This repository contains all code for the project. Here we discuss how to produce the outputs for the main results of the evaluation (Figures 4,5,6,7)
 
+### Setup
+The latest test of the setup was on Ubuntu 24.04.4 LTS x86_64
+```bash
+$ git clone git@github.com:AU-DIS/QBL.git
+$ cd QBL
+# Download dependencies
+# Boost
+$ sudo apt-get install libboost-all-dev
+# csv-parser (in QBL folder)
+$ git clone git@github.com:vincentlaucsb/csv-parser.git 
+# Google Benchmark (in QBL folder)
+$ git clone https://github.com/google/benchmark.git
+$ cd benchmark
+$ cmake -E make_directory "build"
+$ cmake -DBENCHMARK_DOWNLOAD_DEPENDENCIES=on -DCMAKE_BUILD_TYPE=Release -S . -B "build"
+$ cmake --build "build" --config Release
+$ cd ..
+# Build this project
+$ cmake -DCMAKE_BUILD_TYPE=Release -S .
+$ cmake --build .
+# Allow executable scripts
+$ sudo chmod +x *.sh
+```
+
+### Runtime benchmarks (Figure 6 and 7 )
+```bash
+$ ./run_benchmark.sh
+```
+An output from Google Benchmark will be printed to the terminal in the style of:
+```
+----------------------------------------------------------------------------------------------------------------
+Benchmark                                                                      Time             CPU   Iterations
+----------------------------------------------------------------------------------------------------------------
+benchmark_m_policy<QBL>/100/10/iterations:50/manual_time                   0.591 ms        0.664 ms           50
+benchmark_m_policy<QBL>/1000/100/iterations:50/manual_time                  4.54 ms         4.69 ms           50
+benchmark_m_policy<QBL>/10000/1000/iterations:50/manual_time                66.8 ms         67.9 ms           50
+benchmark_m_policy<QBL>/100000/10000/iterations:50/manual_time               763 ms          774 ms           50
+benchmark_m_policy_sample<QBL>/100/10/iterations:50/manual_time            0.217 ms        0.460 ms           50
+benchmark_m_policy_sample<QBL>/1000/100/iterations:50/manual_time           2.77 ms         4.89 ms           50
+benchmark_m_policy_sample<QBL>/10000/1000/iterations:50/manual_time         47.9 ms         69.4 ms           50
+benchmark_m_policy_sample<QBL>/100000/10000/iterations:50/manual_time        494 ms          784 ms           50
+benchmark_m_policy_update<QBL>/100/10/iterations:50/manual_time            0.230 ms        0.462 ms           50
+benchmark_m_policy_update<QBL>/1000/100/iterations:50/manual_time           2.04 ms         4.77 ms           50
+benchmark_m_policy_update<QBL>/10000/1000/iterations:50/manual_time         20.5 ms         67.1 ms           50
+benchmark_m_policy_update<QBL>/100000/10000/iterations:50/manual_time        290 ms          771 ms           50
+``` 
+
+And the `csv` files `combined.csv`, `samlpe.csv`,`update.csv` will be produced, containing compacted overviews.  
+Example of `sample.csv`:
+```
+name,k,m,iterations,real_time,cpu_time,time_unit
+QBL,100,10,50,0.216797,0.459572,ms
+QBL,1000,100,50,2.76651,4.89428,ms
+QBL,10000,1000,50,47.8559,69.4431,ms
+QBL,100000,10000,50,493.791,784.167,ms
+```
+
+> [!NOTE]
+> The column `Iterations` refeers to the number of executions of the function and not the timehorizon of the algorithms. The timehorizon is set to 1000 for these benchmarks.
+
+real_time, measures the runtime of the targeted routine, while cpu_time measures the total execution time of the bandit. Sample and update times are measured independendly from the total time, hence cpu_time should be simmilar between the sample, update and total time measues of an algorithm to ensure they are comparable with each other. This should only be a concern for fast methods or with small parameter settings.    
+
+
+## Regret benchmarks (Figure 4 and 5)
+```bash
+$ ./run_generic.sh
+```
+
+
+___
+> [!IMPORTANT]
+> The following section describes the setup for results shown in figure 2 and 3. They require the availability on an mssql server and notable RAM and storage.
+These are supporting experiments.
 # Index tuning experiment: DBABandits-modded & HMAB-modded
 A modified version of https://github.com/malingaperera/DBABandits with the addition of QBL
 
