@@ -54,7 +54,8 @@ add_executable(benchmark_bandits benchmark.cpp
         datastructures/Incremental_LSE_sum_heap.h
         datastructures/Incremental_product_heap.h
         datastructures/Incremental_cnt_sum_heap.h
-        datastructures/max_heap.h algorithms/Exp3Bandit/Exp3Light.h algorithms/Exp3Bandit/Exp3Light.cpp algorithms/Exp3m/Exp3light_m_heap.h algorithms/Exp3Bandit/Exp3LightHeap.h algorithms/Exp3Bandit/Exp3LightHeap.cpp benchmarks/exp3light.h benchmarks/exp3lightheap.h benchmarks/Exp3ixtor.h benchmarks/Policy.h)
+        datastructures/max_heap.h algorithms/Exp3Bandit/Exp3Light.h algorithms/Exp3Bandit/Exp3Light.cpp algorithms/Exp3m/Exp3light_m_heap.h algorithms/Exp3Bandit/Exp3LightHeap.h algorithms/Exp3Bandit/Exp3LightHeap.cpp
+         benchmarks/Policy.h)
 
 add_executable(optimal_parameter_finder optimal_parameter_finder.cpp
 algorithms/Exp3Bandit/Exp3.h
