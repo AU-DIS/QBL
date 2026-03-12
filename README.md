@@ -85,7 +85,8 @@ and
 
 Where the output folder can be modified.
 
->[!NOTE] These experiments can be very slow to run with the full `T=100000`. We have set it to 1000 in this example, but can be changes in the above scripts to reproduce the complete data in Figure 4 and 5. 
+> [!NOTE]
+> These experiments can be very slow to run with the full `T=100000`. We have set it to 1000 in this example, but it can be changed in the above scripts to reproduce the complete data in Figure 4 and 5. Doing so is needed to observe the real trends. 
 
 Be aware multiple sub routines return prints in the terminal after the main process has closed, so the script may have finished, even though it does not look like it. Check `htop` if in doubt.
   
