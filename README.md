@@ -1,6 +1,4 @@
 # Practical Adversarial Multi-Armed Bandits with Sublinear Runtime
-- Online Graph summarisation experiment: See folder AGLIMPSE
-- Index tuning experiment: See folder DBABandits-modded and HMAB-modded
 
 # Artifact Evaluation
 This repository contains all code for the project. Here we discuss how to produce the outputs for the main results of the evaluation (Figures 4,5,6,7)
@@ -98,6 +96,9 @@ These are supporting experiments.
 ## Index tuning experiment: DBABandits-modded & HMAB-modded
 A modified version of https://github.com/malingaperera/DBABandits with the addition of QBL
 
+
+- Online Graph summarisation experiment: See folder AGLIMPSE
+- Index tuning experiment: See folder DBABandits-modded and HMAB-modded
 
 ## The setup 
 The setup requires a connected mssql TPC-H server to run. We provide an overview of a setup using microsofts provided docker image.
