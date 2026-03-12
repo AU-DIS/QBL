@@ -4,16 +4,20 @@
 This repository contains all code for the project. Here we discuss how to produce the outputs for the main results of the evaluation (Figures 4,5,6,7)
 
 ### Setup
-The latest test of the setup was on Ubuntu 24.04.4 LTS x86_64
+The latest test of the setup was on Ubuntu 24.04.4 LTS x86_64.
+For plotting, common python packages such as `pands` and ´matplotlib´ is required.
+For compiling, two other projects must be cloned into this one. Steps provided below.
+
+To build the project:
 ```bash
 $ git clone git@github.com:AU-DIS/QBL.git
 $ cd QBL
 # Download dependencies
 # Boost
 $ sudo apt-get install libboost-all-dev
-# csv-parser (in QBL folder)
+# csv-parser (in project root folder)
 $ git clone git@github.com:vincentlaucsb/csv-parser.git 
-# Google Benchmark (in QBL folder)
+# Google Benchmark (in project folder)
 $ git clone https://github.com/google/benchmark.git
 $ cd benchmark
 $ cmake -E make_directory "build"
