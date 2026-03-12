@@ -5,7 +5,7 @@ This repository contains all code for the project. Here we discuss how to produc
 
 ### Setup
 The latest test of the setup was on Ubuntu 24.04.4 LTS x86_64.
-For plotting, common python packages such as `pands` and ´matplotlib´ is required.
+For plotting, common python packages such as `pandas` and `matplotlib` is required.
 For compiling, two other projects must be cloned into this one. Steps provided below.
 
 To build the project:
