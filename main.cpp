@@ -1,14 +1,14 @@
 #include "experiments/AdversarialExperimentRunner.h"
 #include "datasets/data_generators.h"
-#include "experiments/Exp3ComparisonRunner.h"
+//#include "experiments/Exp3ComparisonRunner.h"
 #include "experiments/FPLComparisonRunner.h"
-#include "experiments/TsallisComparisonRunner.h"
-#include "experiments/ExploreNoMoreRunner.h"
+//#include "experiments/TsallisComparisonRunner.h"
+//#include "experiments/ExploreNoMoreRunner.h"
 #include "datastructures/Incremental_LSE_sum_heap.h"
 #include "algorithms/Exp3Bandit/Exp3_heap.h"
 #include "datasets/Dataset_movielens.h"
 #include <map>
-#include "experiments/TheoreticalBoundRunner.h"
+//#include "experiments/TheoreticalBoundRunner.h"
 #include "datasets/dataset.h"
 #include <time.h>
 
@@ -39,7 +39,7 @@ static void Initialize()
     s_mapStringValues["GenericBanditRunner"] = generic_bandit_runner;
     s_mapStringValues["Theoretical"] = theoretical;
 }
-
+/*
 static void run_theoretical_bound_experiment_threaded(std::string& algorithm, std::string& variant, double theta, int lambda) {
     if(algorithm == "Exp3Gamma") {
         if (variant == "base") {
@@ -108,7 +108,7 @@ static void run_theoretical_bound_experiment_threaded(std::string& algorithm, st
             run_theoretical_bound_experiment_Tsallis_varying_T(tsallis, "/tmp/Tsallis_Approx_RV_T.csv", 200);
         }
     }
-}
+}*/
 
 int main(int argc, char *argv[])
 {
@@ -164,12 +164,12 @@ int main(int argc, char *argv[])
         // Handle datasets
         //THis is cursed but is legacy from learning c++
         Dataset* d;
-        DuellingDatasetTopk<Exp3m> ddsExp3m;
-        DuellingDatasetTopk<QBL> ddsQBLm;
-        DuellingDataset<Exp3> ddsExp3;
-        DuellingDataset<FPL> ddsFPL;
-        DuellingDataset<QBL> ddsQBL;
-        DuellingDataset<Tsallis_IW> ddsTsallis_IW;
+        //DuellingDatasetTopk<Exp3m> ddsExp3m;
+        //DuellingDatasetTopk<QBL> ddsQBLm;
+        //DuellingDataset<Exp3> ddsExp3;
+        //DuellingDataset<FPL> ddsFPL;
+        //DuellingDataset<QBL> ddsQBL;
+        //DuellingDataset<Tsallis_IW> ddsTsallis_IW;
         Mod2Dataset mod2dataset;
         StochasticallyConstrainedDataset sCD;
         StochasticDataset stochasticDataset;
@@ -177,7 +177,7 @@ int main(int argc, char *argv[])
         SinusDataset sDS;
         TentMapDataset tentDS;
 
-        if (dataset == "DuellingDataset")
+        /*if (dataset == "DuellingDataset")
         {
             if (runner.find("exp3m") != std::string::npos)
             {
@@ -204,7 +204,7 @@ int main(int argc, char *argv[])
                 ddsTsallis_IW = DuellingDataset<Tsallis_IW>(b, k, rounds);
                 d = &ddsTsallis_IW;
             }
-        }
+        }*/
 
         if (dataset == "BernoulliOptimalDataset")
         {
@@ -239,26 +239,26 @@ int main(int argc, char *argv[])
 
         switch (s_mapStringValues[runner])
         {
-        case adversarial_weights:
+        /*case adversarial_weights:
             run_adversarial_weight_experiment(*d, k, rounds, gap, averages, regret_out, plot_out, algorithm);
             break;
         case adversarial:
             run_adversarial_experiment(*d, k, rounds, averages, gap, out_path);
-            break;
+            break;*/
         case specific_adversarial:
-            if (runner == "exp3_adversarial")
-                run_exp3_adversarial_experiment(*d, k, rounds, averages, gap, out_path);
+            //if (runner == "exp3_adversarial")
+            //    run_exp3_adversarial_experiment(*d, k, rounds, averages, gap, out_path);
             if (runner == "fpl_adversarial")
                 run_fpl_adversarial_experiment(*d, k, rounds, averages, gap, out_path);
-            if (runner == "tsallis_adversarial")
-                run_tsallis_adversarial_experiment(*d, k, rounds, averages, gap, out_path);
+            //if (runner == "tsallis_adversarial")
+            //    run_tsallis_adversarial_experiment(*d, k, rounds, averages, gap, out_path);
             break;
         case adversarial_exp3m:
             run_adversarial_exp3m_experiment(*d, m, k, rounds, averages, gap, out_path);
             break;
-        case explore_no_more:
-            run_explore_no_more_experiment();
-            break;
+        //case explore_no_more:
+        //    run_explore_no_more_experiment();
+        //    break;
         case generic_bandit_runner:
             if (dataset == "adversarial")
             {
@@ -272,9 +272,9 @@ int main(int argc, char *argv[])
                 // run_generic_experiment(d, d.K, rounds, averages, out_path);
             }
             break;
-        case theoretical:
+        /*case theoretical:
             run_theoretical_bound_experiment_threaded(algorithm, variant, theta, lambda);
-            break;
+            break;*/
         default:
             std::cout << "The Requested runner was not found" << std::endl;
             abort();

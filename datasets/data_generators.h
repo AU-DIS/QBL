@@ -4,7 +4,7 @@
 #define EFFICIENT_MULTI_ARMED_BANDITS_DATA_GENERATORS_H
 #include "dataset.h"
 #include "../utilities/chaosmaps.h"
-#include "../experiments/DuelArena.h"
+//#include "../experiments/DuelArena.h"
 #include "iostream"
 #include <boost/math/distributions/beta.hpp>
 #include <boost/random/beta_distribution.hpp>
@@ -443,7 +443,7 @@ public:
     }
 };
 
-template <typename Bandit>
+/*template <typename Bandit>
 class DuellingDataset : public Dataset
 {
 private:
@@ -464,9 +464,6 @@ public:
     std::vector<std::vector<double>> generate()
     {
         auto g = Bandit(_b);
-        /*auto q = Bandit(_b);
-        auto optimals = create_adversarial_dataset(q, g, _k, _rounds);
-        */
         auto optimals = create_reflective_adversarial_dataset(g, _k, _rounds);
         std::vector<std::vector<double>> data_matrix;
         for (int arm = 0; arm < _k; arm++)
@@ -529,6 +526,7 @@ public:
         return data_matrix;
     }
 };
+*/
 
 class TentMapDataset : public Dataset
 {
