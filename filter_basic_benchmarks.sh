@@ -2,10 +2,9 @@
 #$tmp_dir=$1
 
 
-grep 'QBL' out.csv >> combined_out.csv
-grep 'FPL' out.csv >> combined_out.csv
-grep 'sample_' out.csv >> basic_sample.csv
-grep 'update_' out.csv >> basic_update.csv
+awk -F',' 'NR > 1 && $1 !~ /^(sample_|update_)/ && $1 != ""' out.csv >> combined_out.csv
+awk -F',' 'NR > 1 && $1 ~ /^sample_/' out.csv >> basic_sample.csv
+awk -F',' 'NR > 1 && $1 ~ /^update_/' out.csv >> basic_update.csv
 
 
 sed 's/sample_//g' basic_sample.csv >> sample_out.csv

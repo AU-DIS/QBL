@@ -17,8 +17,8 @@ echo "name,k,m,iterations,real_time,cpu_time,time_unit" >> header.csv
 
 
 
-#python3 plotting/benchmark.py /mnt/ssd/bandits/sample.csv /mnt/ssd/bandits/sample.png
-#python3 plotting/benchmark.py /mnt/ssd/bandits/update.csv /mnt/ssd/bandits/update.png
-#python3 plotting/benchmark.py /mnt/ssd/bandits/combined.csv /mnt/ssd/bandits/combined.png
+python3 plotting/benchmark.py sample.csv sample.png
+python3 plotting/benchmark.py update.csv update.png
+python3 plotting/benchmark.py combined.csv combined.png
 
 #./filter_fpl_benchmarks.sh /tmp /mnt/ssd/bandits

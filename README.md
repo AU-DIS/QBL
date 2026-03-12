@@ -1,4 +1,4 @@
-# Robust Automatic Choice Tuning for Nonstationary Workloads
+# Practical Adversarial Multi-Armed Bandits with Sublinear Runtime
 - Online Graph summarisation experiment: See folder AGLIMPSE
 - Index tuning experiment: See folder DBABandits-modded and HMAB-modded
 
@@ -62,6 +62,8 @@ QBL,10000,1000,50,47.8559,69.4431,ms
 QBL,100000,10000,50,493.791,784.167,ms
 ```
 
+A full set of outputfiles can be found in the folder `example_outputs/`
+
 > [!NOTE]
 > The column `Iterations` refeers to the number of executions of the function and not the timehorizon of the algorithms. The timehorizon is set to 1000 for these benchmarks.
 
@@ -72,13 +74,28 @@ real_time, measures the runtime of the targeted routine, while cpu_time measures
 ```bash
 $ ./run_generic.sh
 ```
+This script will generate all regret plots and data. **There are many file** so as standard they are saved to your root `/tmp` folder.
+
+The `run_generic.sh` script calls  
+`experiments/experiment_specifications/AdversarialExperiments/run_adversarial_exp3m.sh`  
+and    
+`experiments/experiment_specifications/AdversarialExperiments/run_adversarial_fpl.sh`  
+
+Where the output folder can be modified.
+
+>[!NOTE] These experiments can be very slow to run with the full `T=100000`. We have set it to 1000 in this example, but can be changes in the above scripts to reproduce the complete data in Figure 4 and 5. 
+
+Be aware multiple sub routines return prints in the terminal after the main process has closed, so the script may have finished, even though it does not look like it. Check `htop` if in doubt.
+  
 
 
+___
+# Bonus 
 ___
 > [!IMPORTANT]
 > The following section describes the setup for results shown in figure 2 and 3. They require the availability on an mssql server and notable RAM and storage.
 These are supporting experiments.
-# Index tuning experiment: DBABandits-modded & HMAB-modded
+## Index tuning experiment: DBABandits-modded & HMAB-modded
 A modified version of https://github.com/malingaperera/DBABandits with the addition of QBL
 
 
