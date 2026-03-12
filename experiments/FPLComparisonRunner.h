@@ -5,11 +5,11 @@
 
 #include <thread>
 #include "../algorithms/FPL/FPL.h"
-#include "../algorithms/FPL/FPL_toplog.h"
-#include "../algorithms/FPL/FPL_unnormalized.h"
-#include "../algorithms/FPL/FPL_hash.h"
+//#include "../algorithms/FPL/FPL_toplog.h"
+//#include "../algorithms/FPL/FPL_unnormalized.h"
+//#include "../algorithms/FPL/FPL_hash.h"
 #include "../algorithms/FPL/QBL.h"
-#include "../algorithms/Exp3Bandit/Exp3Tor.h"
+//#include "../algorithms/Exp3Bandit/Exp3Tor.h"
 #include "../algorithms/Exp3Bandit/Exp3IXTor.h"
 #include "../algorithms/Exp3Bandit/Exp3Light.h"
 #include "../algorithms/Exp3Bandit/Exp3_heap.h"
@@ -24,7 +24,7 @@ void run_fpl_adversarial_experiment(Dataset &d, int k, int rounds, int averages,
     std::vector<double> fpl_original_regrets(rounds);
     std::vector<double> fpl_new_regrets(rounds);
     std::vector<double> exp3_regrets(rounds);
-    std::vector<double> exp3tor_regrets(rounds);
+    //std::vector<double> exp3tor_regrets(rounds);
     std::vector<double> exp3IXtor_regrets(rounds);
     std::vector<double> uniform_regrets(rounds);
     std::vector<double> exp3light_regrets(rounds);
@@ -34,7 +34,7 @@ void run_fpl_adversarial_experiment(Dataset &d, int k, int rounds, int averages,
     auto baseline = "FPL";
     auto uniform = "Uniform";
     auto compared = "QBL";
-    auto exp3_tor = "Exp3tor";
+    //auto exp3_tor = "Exp3tor";
     auto exp3_IXtor = "Exp3IXtor";
     auto exp3_comp = "Exp3";
     auto exp3_light = "Exp3Light";
@@ -55,7 +55,7 @@ void run_fpl_adversarial_experiment(Dataset &d, int k, int rounds, int averages,
         double gamma = 0.1;
         double eta = 0.1;
         Exp3 exp3(k, gamma);
-        Exp3Tor exp3tor(k,eta);
+        //Exp3Tor exp3tor(k,eta);
         Exp3IXTor exp3IXtor(k, eta);
         Exp3Light exp3light(k, eta);
         Exp3_heap exp3heap(k, eta);
@@ -80,9 +80,9 @@ void run_fpl_adversarial_experiment(Dataset &d, int k, int rounds, int averages,
         std::thread t4(basic_runner<Uniformbandit>, std::ref(uni), std::ref(data_matrix), rounds,
                        std::ref(uniform_run));
 
-        std::vector<double> exp3tor_run;
-        std::thread t5(basic_runner<Exp3Tor>, std::ref(exp3tor), std::ref(data_matrix), rounds,
-                      std::ref(exp3tor_run));
+        //std::vector<double> exp3tor_run;
+        //std::thread t5(basic_runner<Exp3Tor>, std::ref(exp3tor), std::ref(data_matrix), rounds,
+        //              std::ref(exp3tor_run));
         std::vector<double> exp3IXtor_run;
         std::thread t6(basic_runner<Exp3IXTor>, std::ref(exp3IXtor), std::ref(data_matrix), rounds,
                        std::ref(exp3IXtor_run));
@@ -104,7 +104,7 @@ void run_fpl_adversarial_experiment(Dataset &d, int k, int rounds, int averages,
         t2.join();
         t3.join();
         t4.join();
-        t5.join();
+        //t5.join();
         t6.join();
         t7.join();
         t8.join();
@@ -116,7 +116,7 @@ void run_fpl_adversarial_experiment(Dataset &d, int k, int rounds, int averages,
             fpl_new_regrets[round] += fpl_new_run[round];
             exp3_regrets[round] += exp3_run[round];
             uniform_regrets[round] += uniform_run[round];
-            exp3tor_regrets[round] += exp3tor_run[round];
+            //exp3tor_regrets[round] += exp3tor_run[round];
             exp3IXtor_regrets[round] += exp3IXtor_run[round];
             exp3light_regrets[round] += exp3Light_run[round];
             exp3heap_regrets[round] += exp3Heap_run[round];
@@ -132,8 +132,8 @@ void run_fpl_adversarial_experiment(Dataset &d, int k, int rounds, int averages,
         v /= averages;
     for (auto &v : uniform_regrets)
         v /= averages;
-    for (auto &v : exp3tor_regrets)
-        v /= averages;
+    //for (auto &v : exp3tor_regrets)
+    //    v /= averages;
     for (auto &v : exp3IXtor_regrets)
         v /= averages;
     for (auto &v : exp3light_regrets)
@@ -151,7 +151,7 @@ void run_fpl_adversarial_experiment(Dataset &d, int k, int rounds, int averages,
     result_matrix.push_back(exp3_regrets);
     result_matrix.push_back(uniform_regrets);
 
-    result_matrix.push_back(exp3tor_regrets);
+    //result_matrix.push_back(exp3tor_regrets);
     result_matrix.push_back(exp3IXtor_regrets);
     result_matrix.push_back(exp3light_regrets);
     result_matrix.push_back(exp3heap_regrets);
@@ -166,7 +166,7 @@ void run_fpl_adversarial_experiment(Dataset &d, int k, int rounds, int averages,
         compared + "," +
         exp3_comp + ","+
         uniform + "," +
-        exp3_tor + "," +
+        //exp3_tor + "," +
         exp3_IXtor + "," +
         exp3_light + "," +
         exp3_heap + "," +
@@ -176,7 +176,7 @@ void run_fpl_adversarial_experiment(Dataset &d, int k, int rounds, int averages,
         compared,
         exp3_comp,
         uniform,
-        exp3_tor,
+        //exp3_tor,
         exp3_IXtor,
         exp3_light,
         exp3_heap,

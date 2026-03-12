@@ -81,11 +81,7 @@ public:
 
         for (auto &v : _weights)
             v += _exponential_distribution(_gen);
-        /*
-         * Draw is simply an arg-max, but std::vector does not support argmax
-         * All code examples use chaining of algorithms that will only add useless computations,
-         * so we implement it manually
-         */
+        
         int max_index = 0;
         double max_element = 0;
 
