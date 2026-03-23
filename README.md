@@ -12,19 +12,24 @@ To build the project:
 ```bash
 $ git clone git@github.com:AU-DIS/QBL.git
 $ cd QBL
-# Download dependencies
-# Boost
+##### Download dependencies ####
+# Python packages (install python first)
+$ pip install pandas
+$ pip install matplotlib
+### Cmake
+$ sudo apt-get install cmake
+### Boost
 $ sudo apt-get install libboost-all-dev
-# csv-parser (in project root folder)
+### csv-parser (in project root folder)
 $ git clone git@github.com:vincentlaucsb/csv-parser.git 
-# Google Benchmark (in project folder)
+### Google Benchmark (in project folder)
 $ git clone https://github.com/google/benchmark.git
 $ cd benchmark
 $ cmake -E make_directory "build"
 $ cmake -DBENCHMARK_DOWNLOAD_DEPENDENCIES=on -DCMAKE_BUILD_TYPE=Release -S . -B "build"
 $ cmake --build "build" --config Release
 $ cd ..
-# Build this project
+##### Build this project #####
 $ cmake -DCMAKE_BUILD_TYPE=Release -S .
 $ cmake --build .
 # Allow executable scripts
