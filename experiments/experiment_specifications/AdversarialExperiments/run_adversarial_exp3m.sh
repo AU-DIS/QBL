@@ -49,8 +49,8 @@ for k in 20; do
     run_experiment $k $m
   done
 done
-for k in 20; do
-  for m in 20 150; do
+for k in 200; do
+  for m in 50 150; do
     run_experiment $k $m
   done
 done
