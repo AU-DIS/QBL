@@ -74,8 +74,10 @@ A full set of outputfiles can be found in the folder `example_outputs/`
 > [!NOTE]
 > The column `Iterations` refeers to the number of executions of the function and not the timehorizon of the algorithms. The timehorizon is set to 1000 for these benchmarks.
 
-real_time, measures the runtime of the targeted routine, while cpu_time measures the total execution time of the bandit. Sample and update times are measured independendly from the total time, hence cpu_time should be simmilar between the sample, update and total time measues of an algorithm to ensure they are comparable with each other. This should only be a concern for fast methods or with small parameter settings.    
+real_time, measures the runtime of the targeted routine, while cpu_time measures the total execution time of the bandit. Sample and update times are measured independendly from the total time, hence cpu_time should be simmilar between the sample, update and total time measues of an algorithm to ensure they are comparable with each other. This should only be a concern for fast methods or with small parameter settings.  
 
+To ensure CPU frequency scaling does not impact runtimes, it can be disabled with: `echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost`  
+(Make sure to turn it on again later)
 
 ## Regret benchmarks (Figure 4 and 5)
 ```bash
