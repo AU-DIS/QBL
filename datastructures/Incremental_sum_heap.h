@@ -44,12 +44,12 @@ public:
                 _heap[i] = _heap[2 * i] + log(exp(_heap[2 * i + 1]-_heap[2 * i])+1);
                 _leafs[i] = _leafs[2*i]+_leafs[2*i+1];
                 _min[i] = (_min[2*i] < _min[2*i+1]) ? _min[2*i] : _min[2*i+1];
-                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _min[2*i+1];
+                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _max[2*i+1];
             } else {
                 _heap[i] = _heap[2 * i + 1] + log(exp(_heap[2 * i]-_heap[2 * i + 1])+1);
                 _leafs[i] = _leafs[2*i]+_leafs[2*i+1];
                 _min[i] = (_min[2*i] < _min[2*i+1]) ? _min[2*i] : _min[2*i+1];
-                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _min[2*i+1];
+                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _max[2*i+1];
             }
             //if (fabs(_heap[i]) < 1e-15) {
             //    _heap[i] = 0;
@@ -91,12 +91,12 @@ public:
                 _heap[i] = _heap[2 * i] + log(exp(_heap[2 * i + 1]-_heap[2 * i])+1);
                 _leafs[i] = _leafs[2*i]+_leafs[2*i+1];
                 _min[i] = (_min[2*i] < _min[2*i+1]) ? _min[2*i] : _min[2*i+1];
-                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _min[2*i+1];
+                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _max[2*i+1];
             } else {
                 _heap[i] = _heap[2 * i + 1] + log(exp(_heap[2 * i]-_heap[2 * i + 1])+1);
                 _leafs[i] = _leafs[2*i]+_leafs[2*i+1];
                 _min[i] = (_min[2*i] < _min[2*i+1]) ? _min[2*i] : _min[2*i+1];
-                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _min[2*i+1];
+                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _max[2*i+1];
             }
             //if (fabs(_heap[i]) < 1e-15) {
             //    _heap[i] = 0;
@@ -132,7 +132,7 @@ public:
                 _heap[i] = _heap[2 * i +1] + _heap[2*i];
                 _leafs[i] = _leafs[2*i]+_leafs[2*i+1];
                 _min[i] = (_min[2*i] < _min[2*i+1]) ? _min[2*i] : _min[2*i+1];
-                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _min[2*i+1];
+                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _max[2*i+1];
             }
         }
 
@@ -162,12 +162,12 @@ public:
                 _heap[i] = _heap[2 * i] + log(exp(_heap[2 * i + 1]-_heap[2 * i])+1);
                 _leafs[i] = _leafs[2*i]+_leafs[2*i+1];
                 _min[i] = (_min[2*i] < _min[2*i+1]) ? _min[2*i] : _min[2*i+1];
-                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _min[2*i+1];
+                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _max[2*i+1];
             } else {
                 _heap[i] = _heap[2 * i + 1] + log(exp(_heap[2 * i]-_heap[2 * i + 1])+1);
                 _leafs[i] = _leafs[2*i]+_leafs[2*i+1];
                 _min[i] = (_min[2*i] < _min[2*i+1]) ? _min[2*i] : _min[2*i+1];
-                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _min[2*i+1];
+                _max[i] = (_max[2*i] > _max[2*i+1]) ? _max[2*i] : _max[2*i+1];
             }
             //if (fabs(_heap[i]) < 1e-15) {
             //    _heap[i] = 0;
