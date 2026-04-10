@@ -66,7 +66,7 @@ public:
         //Init weightings for isRewarding calsulation
         last_term_sum_of_rewards = std::vector<double>(_k,0);
         last_term_sum_of_counts = std::vector<int>(_k,1);
-        total_last_term_sum_of_rewards = 0;_k;
+        total_last_term_sum_of_rewards = _k;
         total_last_term_sum_of_counts = _k;
 
         //Init last choice for m version
